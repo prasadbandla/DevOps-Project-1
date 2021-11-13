@@ -1,4 +1,28 @@
-#!groovy
+pipeline {
+  agent any
+  tools {
+    maven 'maven383'
+  }
+  stages {
+    stage('checkout') {
+      steps {
+        checkout scm
+      }
+    }
+    stage('build') {
+      steps {
+        sh "mvn clean install"
+      }
+    }
+  }
+}
+
+
+
+
+
+
+/* #!groovy
 
 pipeline {
   agent none
@@ -19,3 +43,4 @@ pipeline {
     }
   }
 }
+*/
